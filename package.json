@@ -1,0 +1,19 @@
+{
+    "name": "focus-mentor",
+    "description": "Improve focus through enforced feedback loop",
+    "authors": "Chad Meadows",
+    "version": "1.0.0",
+    "main": "main",
+    "scripts": {
+        "build-watch": "node fuse.js"
+    },
+    "dependencies": {
+        "webextension-common": "file:../webextension-common"
+    },
+    "devDependencies": {
+        "webextension-polyfill": "^0.2.1",
+        "web-ext-types": "github:michael-zapata/web-ext-types",
+        "fuse-box": "^2.5.0-beta.1",
+        "typescript": "^2.6.2"
+    }
+}
