@@ -2,7 +2,9 @@
     "compilerOptions": {
         "module": "system",
         "outDir": "dist",
-        "sourceRoot": ".",
+        "rootDirs": [
+            "../webextension-common"
+        ],
         "target": "esnext",
         "moduleResolution": "node",
         "outFile": "sample.js",

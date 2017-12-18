@@ -24,7 +24,7 @@
     "commands": { // note, bindings do not show in chrome if there is already a pre-existing binding of same keys
         "start": {
             "suggested_key": {
-                "default": "MacCtrl+K"
+                "default": "Ctrl+Shift+Space"
             },
             "description": "run command"
         }

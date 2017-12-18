@@ -12,3 +12,5 @@ WebExtensions.subscribeMessages('popup.event', (a,b)=>{
 })
 
 WebExtensions.sendMessage({event:'page.event', content:'message from PageProxy'}).then(reply=>console.log(reply))
+
+WebExtensions.doubleTapKeyEventListener(WebExtensions.Key.Enter, ()=>console.log('double tap'));
