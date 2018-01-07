@@ -13,4 +13,10 @@ WebExtensions.subscribeMessages('popup.event', (a,b)=>{
 
 WebExtensions.sendMessage({event:'page.event', content:'message from PageProxy'}).then(reply=>console.log(reply))
 
-WebExtensions.doubleTapKeyEventListener(WebExtensions.Key.Enter, ()=>console.log('double tap'));
+
+WebExtensions.keyChordEventListener([WebExtensions.KeySpecial.Shift, WebExtensions.KeySpecial.Enter], ()=>console.log('all keys down'))
+
+WebExtensions.keySequenceEventListener([WebExtensions.KeySpecial.Shift, WebExtensions.KeySpecial.Control], ()=>console.log('sequence'))
+WebExtensions.keySequenceEventListener(['c', 'h', 'a', 'd'], ()=>console.log('easter egg'))
+
+
