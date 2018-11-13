@@ -11,9 +11,9 @@
         "webextension-common": "file:../webextension-common"
     },
     "devDependencies": {
-        "webextension-polyfill": "^0.2.1",
+        "webextension-polyfill": "^0.3.1",
         "web-ext-types": "github:michael-zapata/web-ext-types",
-        "fuse-box": "^2.5.0-beta.1",
-        "typescript": "^2.6.2"
+        "fuse-box": "^3.6.0",
+        "typescript": "^3.1.6"
     }
 }

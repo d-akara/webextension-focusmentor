@@ -1,17 +1,19 @@
 import * as WebExtensions from '../node_modules/webextension-common/src/WebExtensions'
+WebExtensions.makeLogReceiver()
+const log = WebExtensions.makeLogger('Background')
 
-console.log('Background loaded')
+log.log('loaded')
 
 WebExtensions.subscribeKeyCommandEvents((command)=>{
-    console.log("command:", command)
-    WebExtensions.createWindow('src/Popup.html').then(window=>console.log('created', window))
+    log.log("command:", command)
+    WebExtensions.createWindow('src/Popup.html').then(window=>log.log('created', window))
 });
 
 WebExtensions.subscribeMessages('page.event', (e)=> {
-    console.log('message received', e)
+    log.log('message received', e)
     return 'response from background'
 })
 
 WebExtensions.listenContentLoaded((event:WebExtensions.EventSource)=> {
-    console.log('loaded event: ',event);
+    log.log('loaded event: ',event);
 })

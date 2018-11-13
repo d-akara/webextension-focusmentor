@@ -7,7 +7,6 @@
         ],
         "target": "esnext",
         "moduleResolution": "node",
-        "outFile": "sample.js",
         "typeRoots": ["node_modules/@types", "node_modules/web-ext-types"],
         "baseUrl": "."
     }
