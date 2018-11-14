@@ -9,3 +9,5 @@ WebExtensions.sendMessageActiveTab({ event: "toolbar.event", content: 'message f
     newImageHTMLElement.innerText = response as Object as string
     document.getElementsByTagName('body')[0].appendChild(newImageHTMLElement);
 });
+
+log.log(browser.tabs)

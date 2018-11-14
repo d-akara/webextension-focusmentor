@@ -1,5 +1,4 @@
 import * as WebExtensions from '../node_modules/webextension-common/src/WebExtensions'
-WebExtensions.makeLogReceiver()
 
 const log = WebExtensions.makeLogger('PageProxy')
 log.log("loaded");

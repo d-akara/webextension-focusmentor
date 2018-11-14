@@ -1,5 +1,5 @@
 import * as WebExtensions from '../node_modules/webextension-common/src/WebExtensions'
-WebExtensions.makeLogReceiver()
+WebExtensions.makeBackgroundLogReceiver()
 const log = WebExtensions.makeLogger('Background')
 
 log.log('loaded')
@@ -17,3 +17,5 @@ WebExtensions.subscribeMessages('page.event', (e)=> {
 WebExtensions.listenContentLoaded((event:WebExtensions.EventSource)=> {
     log.log('loaded event: ',event);
 })
+
+log.log(browser.tabs)
