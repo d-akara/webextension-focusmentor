@@ -2,6 +2,8 @@ import * as WebExtensions from '../node_modules/webextension-common/src/WebExten
 WebExtensions.makeBackgroundLogReceiver()
 const log = WebExtensions.makeLogger('Background')
 
+WebExtensions.enablePageActionHandler()
+
 log.log('loaded')
 
 WebExtensions.subscribeKeyCommandEvents((command)=>{

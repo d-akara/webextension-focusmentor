@@ -21,3 +21,5 @@ WebExtensions.keyChordEventListener([WebExtensions.KeySpecial.Shift, WebExtensio
 WebExtensions.keySequenceEventListener([WebExtensions.KeySpecial.Shift, WebExtensions.KeySpecial.Control], ()=>log.log('sequence'))
 WebExtensions.keySequenceEventListener(['c', 'h', 'a', 'd'], ()=>log.log('easter egg'))
 
+WebExtensions.enablePageAction()
+
