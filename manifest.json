@@ -12,25 +12,20 @@
 
     "browser_action": {  // create a browser toolbar entry
         "default_title": "Sample Extension",
-        "default_icon": "src/chevron-double-up.png",
-        "default_popup": "src/BrowserToolbar.html",
+        "default_icon": "icons/chevron-double-up.png",
         "browser_style": true
     },
 
-    "options_ui": {
-        "page": "src/PopUp.html"
-    },
+    "options_ui": { "page": "src/webextension/Options.html"},
+    "devtools_page": "src/webextension/Devtools.html",
     
-    // page actions don't seem that useful.
-    // you can't hide the action.  hide/show actuall enable or disable
-    // "page_action": {},
-
+    
     "content_scripts": [{ // runs in context of a loaded page
         "matches": ["<all_urls>"],
         "js": ["dist/polyfills.js", "dist/page-proxy.js"],
         "run_at": "document_end"
-    }],
-
+        }],
+        
     "commands": { // note, bindings do not show in chrome if there is already a pre-existing binding of same keys
         "start": {
             "suggested_key": {
@@ -44,10 +39,11 @@
         "activeTab",
         "webNavigation"
     ]
-
+    
     // allow a script to be injected into the page source
     //"web_accessible_resources": ["script.js"]
-
-    // developer tools panel
-    //"devtools_page": "",
+    
+    // page actions don't seem that useful.
+    // you can't hide the action.  hide/show actuall enable or disable
+    // "page_action": {},
 }
