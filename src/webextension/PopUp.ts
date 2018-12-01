@@ -1,4 +1,4 @@
-import * as WebExtensions from '../../node_modules/webextension-common/src/WebExtensions'
+import * as WebExtensions from 'webextension-common'
 const log = WebExtensions.makeLogger('PopUp')
 
 log.log('Popup loaded')

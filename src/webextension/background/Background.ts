@@ -1,4 +1,4 @@
-import * as WebExtensions from '../../node_modules/webextension-common/src/WebExtensions'
+import * as WebExtensions from 'webextension-common'
 WebExtensions.makeBackgroundLogReceiver()
 const log = WebExtensions.makeLogger('Background')
 

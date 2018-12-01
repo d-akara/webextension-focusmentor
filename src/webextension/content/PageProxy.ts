@@ -1,4 +1,5 @@
-import * as WebExtensions from '../../node_modules/webextension-common/src/WebExtensions'
+// import * as WebExtensions from '../../node_modules/webextension-common/src/WebExtensions'
+import * as WebExtensions from 'webextension-common'
 
 const log = WebExtensions.makeLogger('PageProxy')
 log.log("loaded");
@@ -10,6 +11,7 @@ WebExtensions.subscribeMessages('toolbar.event', (a,b)=>{
 
 WebExtensions.subscribeMessages('popup.event', (a,b)=>{
     log.log('page include received: ', a, b)
+    console.log('page include received: ', a, b)
     return 'reply from PageProxy'
 })
 

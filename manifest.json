@@ -7,7 +7,7 @@
     "author": "Chad Meadows",
 
     "background": { // background for long term state
-        "scripts": ["dist/polyfills.js","dist/background.js"]
+        "scripts": ["dist/polyfills.js", "dist/webextension-common.js","dist/background.js"]
     },
 
     "browser_action": {  // create a browser toolbar entry
@@ -16,14 +16,14 @@
         "browser_style": true
     },
 
-    "options_ui": { "page": "src/webextension/Options.html"},
-    "devtools_page": "src/webextension/Devtools.html",
+    "options_ui": { "page": "src/webextension/options/Options.html"},
+    "devtools_page": "src/webextension/devtools/Devtools.html",
     
     
     "content_scripts": [{ // runs in context of a loaded page
         "matches": ["<all_urls>"],
-        "js": ["dist/polyfills.js", "dist/page-proxy.js"],
-        "run_at": "document_end"
+        "js": ["dist/polyfills.js", "dist/webextension-common.js", "dist/page-proxy.js"],
+        "run_at": "document_start"
         }],
         
     "commands": { // note, bindings do not show in chrome if there is already a pre-existing binding of same keys
