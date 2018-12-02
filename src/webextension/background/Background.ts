@@ -1,4 +1,5 @@
 import * as WebExtensions from 'webextension-common'
+WebExtensions.background.startMessageBus()
 WebExtensions.makeBackgroundLogReceiver()
 const log = WebExtensions.makeLogger('Background')
 
@@ -22,4 +23,7 @@ WebExtensions.listenContentLoaded((event:WebExtensions.EventSource)=> {
     log.log('loaded event: ',event);
 })
 
-log.log(browser.tabs)
+WebExtensions.createMessageBusConnection('test', (msg, from, sender, sendResponse) => {
+    log.log('bus message received, sending response', msg)
+    sendResponse({'received': msg})
+})
