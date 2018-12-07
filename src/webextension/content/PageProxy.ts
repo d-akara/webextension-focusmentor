@@ -15,7 +15,7 @@ WebExtensions.subscribeMessages('popup.event', (a,b)=>{
     return 'reply from PageProxy'
 })
 
-WebExtensions.sendMessage({event:'page.event', content:'message from PageProxy'}).then(reply=>log.log(reply))
+WebExtensions.sendMessageExtensionPages({event:'page.event', content:'message from PageProxy'}).then(reply=>log.log(reply))
 
 
 WebExtensions.keyChordEventListener([WebExtensions.KeySpecial.Shift, WebExtensions.KeySpecial.Enter], ()=>log.log('all keys down'))
