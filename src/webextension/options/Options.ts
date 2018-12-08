@@ -14,9 +14,9 @@ try {
     });
 
     WebExtensions.sendMessageTabs({}, { event: "popup.event", content: 'message from options' }).then((response) => {
-        log.log(response)
+        log.log('promise all response', response)
     }).catch(reason => {
-        log.log(JSON.stringify(reason))
+        log.log('handle error', JSON.stringify(reason))
     });
 
 } catch (error) {
