@@ -1,6 +1,7 @@
 import * as wx from 'webextension-common'
-wx.background.makeBackgroundLogReceiver()
+wx.background.startLogReceiver()
 wx.background.startMemoryStorage()
+wx.background.startMessageProxy()
 const log = wx.makeLogger('Background')
 
 log.log('loaded')

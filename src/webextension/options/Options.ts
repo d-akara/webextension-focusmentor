@@ -21,5 +21,5 @@ try {
 
 } catch (error) {
     console.log(error)
-    log.log(error.toString())
+    log.log(JSON.stringify(error))
 }
