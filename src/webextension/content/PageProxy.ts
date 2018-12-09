@@ -1,24 +1,27 @@
 // import * as WebExtensions from '../../node_modules/webextension-common/src/WebExtensions'
-import * as WebExtensions from 'webextension-common'
+import * as wx from 'webextension-common'
 
-const log = WebExtensions.makeLogger('PageProxy')
+const log = wx.makeLogger('PageProxy')
 log.log("loaded");
 
-WebExtensions.subscribeMessages('toolbar.event', (a,b)=>{
+wx.subscribeMessages('toolbar.event', (a,b)=>{
     log.log('page include received: ', a, b)
     return 'reply from PageProxy'
 })
 
-WebExtensions.subscribeMessages('popup.event', (a,b)=>{
+wx.subscribeMessages('popup.event', (a,b)=>{
     log.log('page include received: ', a, b)
     console.log('page include received: ', a, b)
     return 'reply from PageProxy'
 })
 
-WebExtensions.sendMessageExtensionPages({event:'page.event', content:'message from PageProxy'}).then(reply=>log.log(reply))
+wx.sendMessageExtensionPages({event:'page.event', content:'message from PageProxy'}).then(reply=>log.log(reply))
 
 
-WebExtensions.keyChordEventListener([WebExtensions.KeySpecial.Shift, WebExtensions.KeySpecial.Enter], ()=>log.log('all keys down'))
+wx.keyChordEventListener([wx.KeySpecial.Shift, wx.KeySpecial.Enter], ()=>log.log('all keys down'))
 
-WebExtensions.keySequenceEventListener([WebExtensions.KeySpecial.Shift, WebExtensions.KeySpecial.Control], ()=>log.log('sequence'))
-WebExtensions.keySequenceEventListener(['c', 'h', 'a', 'd'], ()=>log.log('easter egg'))
+wx.keySequenceEventListener([wx.KeySpecial.Shift, wx.KeySpecial.Control], ()=>log.log('sequence'))
+wx.keySequenceEventListener(['c', 'h', 'a', 'd'], ()=>log.log('easter egg'))
+
+wx.storage.memSet({data1: {type: 'testing'}})
+.then(() => wx.storage.memGet('data1').then(value => console.log(value)))

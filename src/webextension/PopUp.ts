@@ -1,9 +1,9 @@
-import * as WebExtensions from 'webextension-common'
-const log = WebExtensions.makeLogger('PopUp')
+import * as wx from 'webextension-common'
+const log = wx.makeLogger('PopUp')
 
 log.log('Popup loaded')
 
-WebExtensions.sendMessageActiveTab({ event: "popup.event", content: 'message from Popup' }).then((response) => {
+wx.sendMessageActiveTab({ event: "popup.event", content: 'message from Popup' }).then((response) => {
     log.log(response);
     const newImageHTMLElement = document.createElement("div");
     newImageHTMLElement.innerText = response as Object as string

@@ -1,10 +1,10 @@
-import * as WebExtensions from 'webextension-common'
-const log = WebExtensions.makeLogger('Options')
+import * as wx from 'webextension-common'
+const log = wx.makeLogger('Options')
 
 log.log('Options loaded')
 
 try {
-    WebExtensions.sendMessageExtensionPages({ event: "page.event", content: 'message from Options' }).then((response) => {
+    wx.sendMessageExtensionPages({ event: "page.event", content: 'message from Options' }).then(response => {
         log.log(response);
         const newImageHTMLElement = document.createElement("div");
         newImageHTMLElement.innerText = response as Object as string
@@ -13,8 +13,8 @@ try {
         log.log(JSON.stringify(reason))
     });
 
-    WebExtensions.sendMessageTabs({}, { event: "popup.event", content: 'message from options' }).then((response) => {
-        log.log('promise all response', response)
+    wx.sendMessageTabs({}, { event: "popup.event", content: 'message from options' }).then(response => {
+        response.filter( r => !r.isError ).forEach( r => log.log('promise all response', r))
     }).catch(reason => {
         log.log('handle error', JSON.stringify(reason))
     });
