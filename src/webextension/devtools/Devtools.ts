@@ -12,6 +12,8 @@ try {
         newImageHTMLElement.innerText = response as Object as string
         document.getElementsByTagName('body')[0].appendChild(newImageHTMLElement);
     });
+
+    wx.subscribeMessages('webextension.ping', event => 'ping response Devtools')
 } catch (error) {
     console.log(error)
     log.log(error.toString())

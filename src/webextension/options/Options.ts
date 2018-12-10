@@ -4,10 +4,10 @@ const log = wx.makeLogger('Options')
 log.log('Options loaded')
 
 try {
-    wx.sendMessageExtensionPages({ event: "page.event", content: 'message from Options' }).then(response => {
-        log.log(response);
+    wx.storage.memGet('count').then(value => {
+        log.log(value);
         const newImageHTMLElement = document.createElement("div");
-        newImageHTMLElement.innerText = response as Object as string
+        newImageHTMLElement.innerText = value as Object as string
         document.getElementsByTagName('body')[0].appendChild(newImageHTMLElement);
     }).catch(reason => {
         log.log(JSON.stringify(reason))
@@ -19,6 +19,8 @@ try {
         log.log('handle error', JSON.stringify(reason))
     });
 
+    wx.sendMessageExtensionPages({ event: "webextension.ping", content: 'ping from devtools' }).then(response => log.log(response));
+    wx.subscribeMessages('webextension.ping', event => 'ping response Options')
 } catch (error) {
     console.log(error)
     log.log(JSON.stringify(error))

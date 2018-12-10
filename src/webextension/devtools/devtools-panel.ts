@@ -10,11 +10,10 @@ try {
         document.getElementsByTagName('body')[0].appendChild(newImageHTMLElement);
     });
 
-    wx.subscribeMessages("page.event", m => log.log('devtools received', m))
+    wx.subscribeMessages('webextension.ping', event => 'ping response devtools-panel')
+    wx.sendMessageActiveTab({ event: "webextension.ping", content: 'ping from devtools' }).then(response => log.log(response));
+    wx.sendMessageExtensionPages({ event: "webextension.ping", content: 'ping from devtools' }).then(response => log.log(response));
 
-    wx.sendMessageActiveTab({ event: "popup.event", content: 'message from devtools' }).then((response) => {
-        log.log(response)
-    });
 } catch (error) {
     console.log(error)
     log.log(error.toString())

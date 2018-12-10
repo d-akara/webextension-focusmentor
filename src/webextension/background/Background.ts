@@ -16,6 +16,8 @@ wx.subscribeMessages('page.event', (e)=> {
     return 'response from background'
 })
 
+wx.subscribeMessages('webextension.ping', event => 'ping response Background')
+
 wx.onBrowserAction(action => {
     wx.createWindow('src/webextension/Popup.html')
 })

@@ -15,7 +15,9 @@ wx.subscribeMessages('popup.event', (a,b)=>{
     return 'reply from PageProxy'
 })
 
-wx.sendMessageExtensionPages({event:'page.event', content:'message from PageProxy'}).then(reply=>log.log(reply))
+wx.subscribeMessages('webextension.ping', event => 'ping response PageProxy')
+
+wx.sendMessageExtensionPages({event:'webextension.ping', content:'ping from PageProxy'}).then(reply=>log.log(reply))
 
 
 wx.keyChordEventListener([wx.KeySpecial.Shift, wx.KeySpecial.Enter], ()=>log.log('all keys down'))
@@ -23,5 +25,5 @@ wx.keyChordEventListener([wx.KeySpecial.Shift, wx.KeySpecial.Enter], ()=>log.log
 wx.keySequenceEventListener([wx.KeySpecial.Shift, wx.KeySpecial.Control], ()=>log.log('sequence'))
 wx.keySequenceEventListener(['c', 'h', 'a', 'd'], ()=>log.log('easter egg'))
 
-wx.storage.memSet({data1: {type: 'testing'}})
-.then(() => wx.storage.memGet('data1').then(value => console.log(value)))
+wx.storage.memSet({'count': 50})
+
